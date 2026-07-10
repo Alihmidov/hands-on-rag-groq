@@ -1,10 +1,17 @@
-# Python-generated files
+.venv/
+env/
+venv/
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.pyc
 
-# Virtual environments
-.venv
+.env
+.secrets
+
+data/raw/handson_ml.pdf
+
+.DS_Store
+.vscode/
+.idea/
+
+logs/
+*.log
