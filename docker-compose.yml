@@ -1,0 +1,13 @@
+services:
+  rag-app:
+    build: .
+    container_name: hands-on-rag-groq
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
