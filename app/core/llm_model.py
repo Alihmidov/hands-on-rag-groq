@@ -25,9 +25,9 @@ def ask_bot(question : str):
     Answer:
     """
     
-    prompt = ChatPromptTemplate().from_template(template)
+    prompt = ChatPromptTemplate.from_template(template)
     
-    model = ChatGroq(model=settings.LLM_MODEL)
+    model = ChatGroq(model=settings.LLM_MODEL, api_key=settings.GROQ_API_KEY)
     
     chain = prompt | model
     
