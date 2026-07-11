@@ -1,6 +1,6 @@
 from app.schemas.request_body import ChatRequest 
 from fastapi import APIRouter
-from app.core.llm_model import ask_bot
+from app.core.llm_logic import ask_bot
 
 router = APIRouter()
 
