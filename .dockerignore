@@ -12,6 +12,5 @@ Dockerfile
 docker-compose.yml
 
 data/raw/handson_ml.pdf
-chroma.db
 
 README.md
