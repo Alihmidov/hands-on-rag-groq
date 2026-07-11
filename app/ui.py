@@ -1,5 +1,8 @@
 import streamlit as st
 from app.core.llm_logic import ask_bot 
+import sys
+import os
+sys.path.append(os.getcwd())
 
 st.set_page_config(page_title="RAG Bot", page_icon="🤖")
 st.title("🤖 DataScience RAG Bot")
