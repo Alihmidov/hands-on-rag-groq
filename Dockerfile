@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.13-slim
 
 WORKDIR /workspace
 
@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 10000
 
-CMD uv run --no-sync streamlit run app/ui.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true
+CMD uv run --no-sync streamlit run app/ui.py --server.port=$PORT --server.address=0.0.0.0
