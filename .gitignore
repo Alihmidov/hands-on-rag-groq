@@ -7,9 +7,6 @@ __pycache__/
 .env
 .secrets
 
-data/raw/handson_ml.pdf
-chroma.db
-
 .DS_Store
 .vscode/
 .idea/
