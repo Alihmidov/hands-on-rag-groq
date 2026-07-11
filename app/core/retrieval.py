@@ -1,10 +1,13 @@
 from config.settings import settings 
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_chroma import Chroma 
 
 def retrieve_context(query: str):
     vectorstore = Chroma(
-        embedding_function = HuggingFaceEmbeddings(model = settings.EMBEDDING_MODEL),
+        embedding_function = HuggingFaceEndpointEmbeddings(
+            model = settings.EMBEDDING_MODEL,
+            huggingfacehub_api_token = settings.HF_API_TOKEN
+        ),
         persist_directory = settings.CHROMA_PATH
     )
     

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     CHUNK_SIZE: int
     CHUNK_OVERLAP: int
     GROQ_API_KEY: str
+    HF_API_TOKEN: str
     DEBUG: bool
     
     class Config:
