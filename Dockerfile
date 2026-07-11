@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 10000
 
-CMD uv run streamlit run app/ui.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false --server.enableWebsocketCompression=false
+CMD uv run --no-sync streamlit run app/ui.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false --server.enableWebsocketCompression=false
