@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 10000
 
-CMD ["uv", "run", "streamlit", "run", "app/ui.py", "--server.port", "10000", "--server.address", "0.0.0.0"]
+CMD uv run streamlit run app/ui.py --server.port=$PORT --server.address=0.0.0.0
