@@ -1,26 +1,20 @@
-import streamlit as st 
-import requests 
+import streamlit as st
+from app.core.llm_logic import ask_bot 
 
-st.set_page_config(page_title="RAG BOT", page_icon="🤖")
-st.title("Hands-on RAG BOT")
-st.caption("Ask your questions and get an answer based on document context")
+st.set_page_config(page_title="RAG Bot", page_icon="🤖")
+st.title("🤖 DataScience RAG Bot")
+st.caption("Ask me anything about [Hands-On Machine Learning] by Aurélien Géron.")
 
-API_URL = "http://127.0.0.1:8000/chat"
-
-query = st.text_input("Enter your question: ")
+query = st.text_input("Enter your question:")
 
 if st.button("Submit"):
     if query:
         with st.spinner("Bot is thinking..."):
             try:
-                response = requests.post(API_URL, json={"query": query})
-                if response.status_code == 200:
-                    st.success("Response:")
-                    answer = response.json().get("answer")
-                    st.markdown(answer)
-                else:
-                    st.error(f"Error: {response.status_code}")
-            except requests.exceptions.ConnectionError:
-                st.error("Backend server is not running! Check your FastAPI.")
-    else: 
-        st.warning("Please, type a question.")
+                answer = ask_bot(query)
+                st.success("Response:") 
+                st.markdown(answer)
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
+    else:
+        st.warning("Please type a question first.")
