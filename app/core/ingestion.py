@@ -2,7 +2,7 @@ import os
 import fitz 
 from config.settings import settings 
 from langchain_text_splitters import RecursiveCharacterTextSplitter 
-from langchain_huggingface import HuggingFaceEmbeddings 
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_chroma import Chroma 
 
 def ingest_document(file_name: str):
@@ -23,7 +23,9 @@ def ingest_document(file_name: str):
     
     vectorstore = Chroma.from_texts(
         texts = chunks,
-        embedding = HuggingFaceEmbeddings(model_name = settings.EMBEDDING_MODEL),
+        embedding = HuggingFaceEndpointEmbeddings(
+            model_name = settings.EMBEDDING_MODEL,
+            huggingfacehub_api_token = settings.HF_API_TOKEN),
         persist_directory = settings.CHROMA_PATH 
     )
     
