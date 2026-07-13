@@ -162,6 +162,12 @@ The application is containerized with Docker and deployed on **Render**.
 Since the free Render plan automatically spins down after inactivity, the first request may take approximately one minute.
 
 ---
+
+# 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
 # 🔮 Future Improvements
 
 - Conversation memory
