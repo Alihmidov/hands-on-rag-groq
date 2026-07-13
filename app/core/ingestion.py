@@ -24,7 +24,7 @@ def ingest_document(file_name: str):
     vectorstore = Chroma.from_texts(
         texts = chunks,
         embedding = HuggingFaceEndpointEmbeddings(
-            model_name = settings.EMBEDDING_MODEL,
+            model = settings.EMBEDDING_MODEL,
             huggingfacehub_api_token = settings.HF_API_TOKEN),
         persist_directory = settings.CHROMA_PATH 
     )
