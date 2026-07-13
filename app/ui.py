@@ -5,8 +5,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import streamlit as st
 from core.llm_logic import ask_bot
 
-st.set_page_config(page_title="RAG Bot", page_icon="🤖")
-st.title("🤖 DataScience RAG Bot")
+st.set_page_config(page_title="Hands-On ML RAG Bot 🤖", page_icon="🤖")
+st.title("🤖 Hands-On ML RAG Bot 🤖")
 st.caption("Ask me anything about [Hands-On Machine Learning] by Aurélien Géron.")
 
 query = st.text_input("Enter your question:")
