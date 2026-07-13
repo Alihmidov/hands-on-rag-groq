@@ -5,76 +5,177 @@
 **[🚀 TRY THE LIVE BOT HERE](https://hands-on-rag-groq-1.onrender.com)**
 > ⏳ *Hosted on Render's free tier — first load may take up to 1 minute to wake up. Please wait, it will load!*
 
-Here is how the bot looks in action:
+> Chat with the *Hands-On Machine Learning* book using Retrieval-Augmented Generation (RAG), semantic search, and Groq LLM.
 
-![DataScience RAG Bot Interface](assets/image.png)
+![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?logo=streamlit)
+![LangChain](https://img.shields.io/badge/LangChain-RAG-green)
+![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-This project is an AI-powered assistant designed to help you interact with the "Hands-On Machine Learning" book by Aurélien Géron. Using RAG (Retrieval-Augmented Generation) technology, it allows you to ask questions and get accurate answers directly from the book's content.
+### Home
 
-## Purpose
+<p align="center">
+<img src="assets/home.png" width="900">
+</p>
 
-The goal of this project is to provide a fast and efficient way to query technical information about machine learning concepts without needing to manually search through hundreds of pages.
+### Example Question
 
-## What It Does
+<p align="center">
+<img src="assets/chat.png" width="900">
+</p>
 
-- **Automatic Ingestion**: Reads the PDF file and indexes its content.
-- **Semantic Search**: Uses vector embeddings to find the most relevant parts of the book for your question.
-- **Interactive UI**: Provides a clean and easy-to-use interface built with Streamlit.
-- **Smart Answering**: Uses LLM (Groq/LangChain) to generate precise explanations based on the book.
+# 📖 Overview
 
-## Tech Stack
+Searching through a technical machine learning textbook can be slow and inefficient.
 
-- **Backend**: FastAPI
-- **UI**: Streamlit
-- **Vector DB**: ChromaDB
-- **Embeddings**: HuggingFace Endpoint Embeddings
-- **LLM**: Groq
-- **Deployment**: Docker, Render.com
+Hands-On ML RAG Bot allows users to ask natural language questions and receive answers grounded in the contents of the book.
 
-## Project Structure
+The application follows the Retrieval-Augmented Generation (RAG) workflow:
 
-- `app/core/ingestion.py`: Handles PDF reading, text splitting, and database creation.
-- `app/core/retrieval.py`: Handles semantic search — retrieves the most relevant chunks from the vector database for a given query.
-- `app/core/llm_logic.py`: Builds the prompt from retrieved context and calls the LLM (Groq) to generate the final answer.
-- `app/ui.py`: The main frontend interface (Streamlit).
-- `config/settings.py`: Manages configuration and environment variables.
+- retrieve relevant book passages
+- provide them to the LLM
+- generate a context-aware answer
 
-## How to Run It
+This approach significantly reduces hallucinations while improving factual accuracy.
 
-1. Clone the repository:
+---
+
+# ✨ Features
+
+- Semantic similarity search
+- Retrieval-Augmented Generation (RAG)
+- Context-aware responses
+- FastAPI backend
+- Streamlit web interface
+- Groq LLM integration
+- HuggingFace embeddings
+- ChromaDB vector database
+
+---
+
+# 🛠 Tech Stack
+
+| Component | Technology |
+|------------|------------|
+| Backend | FastAPI |
+| Frontend | Streamlit |
+| LLM | Groq |
+| Embeddings | HuggingFace Endpoint Embeddings |
+| Framework | LangChain |
+| Vector Database | ChromaDB |
+| PDF Processing | PyMuPDF |
+| Language | Python 3.13 |
+| Package Manager | uv |
+| Deployment | Docker + Render |
+
+---
+
+## 🚀 Installation
+
+## Clone Repository
 
 ```bash
 git clone https://github.com/Alihmidov/hands-on-rag-groq.git
+
 cd hands-on-rag-groq
 ```
 
-2. Install dependencies:
+## Install Dependencies
 
 ```bash
-# If you use uv
 uv sync
 ```
 
-3. Set up API keys:
+## Configure Environment
 
-Create a `.env` file in the project root and add your keys:
+Create a `.env` file:
 
-```
+```env
 HF_API_TOKEN=your_huggingface_token
-GROQ_API_KEY=your_groq_key
+
+GROQ_API_KEY=your_groq_api_key
 ```
 
-4. Launch the bot:
+## Build Vector Database (Optional)
+
+```bash
+uv run python app/core/ingestion.py
+```
+
+> A precomputed ChromaDB database is already included, so this step is optional.
+
+## Start the Application
+
+Backend
+
+```bash
+uv run uvicorn app.main:app --reload
+```
+
+Frontend
 
 ```bash
 uv run streamlit run app/ui.py
 ```
 
-## License
+---
 
-MIT
+# 🐳 Docker
 
-## Known Issues
+Build and start the application:
 
-- **Slow first load**: The app is hosted on Render's free tier, which spins down after inactivity. The first request after idle time may take 30–50 seconds to wake up — please be patient on first load.
-- **Precomputed data included**: The ChromaDB vector store and source PDF are already included in the repository, so no ingestion step is needed on startup.
+```bash
+docker compose up --build
+```
+
+Or run it in detached mode:
+
+```bash
+docker compose up -d
+```
+
+Stop the containers:
+
+```bash
+docker compose down
+```
+
+---
+
+# 💬 Example Questions
+
+- What is Machine Learning?
+- Explain Gradient Descent.
+- Explain Random Forest.
+- What is Batch Normalization?
+- What is Transfer Learning?
+- How do Convolutional Neural Networks work?
+
+---
+
+# 🌐 Deployment
+
+The application is containerized with Docker and deployed on **Render**.
+
+Since the free Render plan automatically spins down after inactivity, the first request may take approximately one minute.
+
+---
+# 🔮 Future Improvements
+
+- Conversation memory
+- Chat history
+- Source citations
+- Streaming responses
+- Hybrid Search 
+- PDF upload support
+- Multi-document support
+
+---
+
+# 👤 Author
+
+**Ali Hmidov**
+
+GitHub: https://github.com/Alihmidov
